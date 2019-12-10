@@ -9,9 +9,7 @@ function split(wholeArray) {
 
 function merge(array1, array2) {
   //sorting goes here
-
   let newArray = [];
-
   let i = 0;
   let j = 0;
 
@@ -23,15 +21,21 @@ function merge(array1, array2) {
       newArray.push(array2[j]);
       j++;
     }
-  }
-
-  return newArray;
+}
+// console.log(newArray);
+return newArray;
 }
 
 function mergeSort(array) {
-  //recursion goes here
-  //need base case
-  //and recursive case
+    if(array.length === 1) return array
+
+    const splitted = split(array);
+    const left = splitted[0]
+    const right = splitted[1]
+    // console.log("left >>>", left)
+    // console.log("mergeSort(left) >>>", mergeSort(left))
+
+    return merge(mergeSort(left), mergeSort(right));
 }
 
-// console.log(merge([1, 2, 8], [3, 5, 6, 9]));
+console.log(mergeSort([8, 2, 1, 9, 5, 6, 3, 4]));
